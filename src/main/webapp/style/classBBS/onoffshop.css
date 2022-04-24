@@ -1,0 +1,110 @@
+@charset "UTF-8";
+@import url(../style.css);
+@import url(../style_Reset.css);
+
+/* 갤러리 리스트 전체크기 */
+div#Gallerybbs{ 
+    width: 1000px;
+    margin: 0 auto;
+}
+/* 갤러리 리스트 전체크기 */
+
+/*######  카테고리 메뉴 시작 ######*/
+div#category{
+    width: 100%;
+    height: 80px;
+    margin: 10px;
+}
+
+div#category {
+    width: 1000px;
+    margin: 0 auto;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+div#category ul {
+    justify-content: center;
+    align-items: center;
+}
+
+div#category ul li {
+    padding: 30px;
+    display: inline-block;
+}
+
+div#category ul li:hover {
+    border-bottom: 1px solid #000;
+}
+/*######  카테고리 메뉴 끝 ######*/
+
+/*  div#goodsPart 추천리스트 시작 */
+div#goodsPart {
+    width: 100%;
+    padding: 20px;
+    justify-content: space-between;
+}
+/* div#goodsPart 끝 */
+
+/* main#galleryListArea 추천 게시물 시작 */
+#Gallerybbs  main#galleryListArea {
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+    overflow: hidden; 
+}
+
+div.letter{
+	text-align: center;
+}
+
+div.titleletter{
+	text-align: center;
+	color: rgba(95, 74, 56, 0.68);  
+    font-size: 12px;
+}
+/* main#galleryListArea 추천 게시물 끝 */
+
+/* 일반리스트 갤러리 시작 */
+div#allclass{
+    width: 100%;
+    text-align: center;
+    /* font-size: 17px; */
+    font-weight: bold;
+    padding: 20px;
+    justify-content: space-between;
+    border-bottom: 1px dotted #000;
+    /* border: 1px solid #000; */
+}
+
+#Gallerybbs  main#galleryListArea {
+	width: 100%;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+#Gallerybbs  main#galleryListArea>table.goodsTbl {
+    text-align: center;
+}
+
+#Gallerybbs  main#galleryListArea>table td {
+    color: #5f4a38;
+    padding: 0px 0px 0px 16px
+    
+}
+
+#Gallerybbs  #galleryListArea>table td.goodsDesc {
+    color: rgba(95, 74, 56, 0.68);  
+    font-size: 12px;
+}
+
+/*############# 페이징 요소 #############*/
+table.page{
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+	cursor:pointer;
+	font-size: 18px;
+}
+/*############# 페이징 끝 #############*/
+

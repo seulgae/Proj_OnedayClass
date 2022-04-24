@@ -1,0 +1,570 @@
+@charset "UTF-8";
+@import url(style_Reset.css);
+@import url(style.css);
+
+
+div#wrap {
+
+}
+
+
+/*///////////////// 템플릿 시작 ////////////////////*/
+#wrap>main#main {
+	padding: 20px;
+	margin: 10px 0;
+}
+#wrap>h1{
+	text-align: center;
+}
+#wrap>h1::after {
+	font-size: 24px;
+	margin-left: 40px;
+}
+
+
+/*///////////////// 템플릿 끝 ////////////////////*/
+
+
+/*///////////////// 글쓰기 Post.jsp 시작 ////////////////////*/
+main.post h2 {
+	text-align: center;
+	padding: 10px 0;	
+	margin-bottom: 20px;
+	background-color: rgb(255, 128, 128);
+}
+
+main.post table {
+	width: 100%;
+}
+
+main.post table tbody td {
+	padding: 10px;
+	/*border: 1px solid #000;*/
+}
+main.post table tbody td:first-child {
+	width: 100px;
+	font-weight: bold;
+	text-align: right;
+}
+
+
+main.post table tfoot td hr {
+	border: 2px solid #ccc;
+}
+main.post table tfoot td {
+	width: 100%;
+	text-align: center;
+	padding: 4px 0;
+	/*border: 1px solid #aaa;*/
+}
+
+
+main.post td.req::after {
+	content: " *";
+	color: #d74;
+	font-weight: bold;
+}
+main.post input#subject {
+	width: 579px;
+}
+
+
+::-webkit-file-upload-button {
+	font-weight: bold;
+	padding: 4px 10px;
+	cursor:pointer; 
+}
+
+
+main.post textarea#content {
+	height: 140px;
+}
+
+main.post label {
+	margin: 0 20px;
+	cursor: pointer;
+}
+main.post label span {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+
+main.post input,
+main.post textarea  {
+	font-size: 17px;
+	padding: 4px 10px;
+}
+
+main.post td.contentTD {
+	vertical-align: top;
+	padding-top: 30px;
+}
+
+
+main.post span.spanFile {
+	padding: 10px;
+}
+
+
+main.post label {
+	margin: 0 20px;
+	cursor: pointer;
+}
+main.post label span {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+main.post button {
+	font-size: 16px;
+	font-weight: bold;
+	padding: 4px 20px;
+	cursor: pointer;
+}
+
+/*///////////////// 글쓰기 Post.jsp 끝 ////////////////////*/
+
+
+
+/*///////////////// 리스트 List.jsp 시작 ////////////////////*/
+
+main.list div#pageInfo {
+	width: 100%;
+	padding: 2px 10px;
+	margin-bottom: 4px;
+	justify-content: space-between;
+}
+
+main.list table#boardList {
+	width: 100%;	
+	border-collapse: collapse;
+}
+
+
+main.list th {
+	padding: 8px 2px;
+	background-color: rgb(255, 128, 128)
+}
+
+
+main.list th:first-child,
+main.list th:last-child {
+	width: 70px;
+}
+
+main.list th:nth-child(3) {
+	width: 150px;
+}
+
+main.list th:nth-child(4) {
+	width: 140px;
+}
+
+main.list td.spaceTd {
+	padding: 1px 0 ;
+	border: none !important;
+	background-color: rgb(136, 136, 136, 0.2);
+}
+main.list tr.prnTr{
+	opacity: 60%;
+}
+main.list tr.prnTr:hover  {
+ 	opacity: 100%;
+	cursor: pointer;
+}
+main.list tr.prnTr:hover td {
+	color: #666;
+	font-weight: bold;
+}
+
+main.list tr.prnTr>td {
+	text-align: center;
+	padding: 20px 2px 10px;
+	border-bottom: 1px solid #d2d2d2;
+}
+
+main.list tr.prnTr>td.subjectTd {
+	text-align: left;
+}
+
+/*///////////////// 리스트 List.jsp 끝 ////////////////////*/
+
+/*///////////////// 리스트 List.jsp  페이징 시작 ////////////////////*/
+main.list td#pagingTd span {
+	width: 30px;
+	height: 30px;
+	font-weight: 12px;
+	text-align: center;
+	line-height: 30px;
+	
+	margin: 10px 2px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+
+
+main.list td#pagingTd span:hover {
+	color: #aaa;
+}
+
+main.list td#pagingTd span.nowPageNum {
+	font-size: 16px;
+	font-weight: bold;
+	background-color: rgba(136, 136, 136, 0.1);
+	cursor: default;
+}
+
+main.list td#pagingTd span.moveBlockArea {
+	width: 30px;
+	height: 30px;
+	font-size: 12px;
+	margin: 0 6px;
+	display: inline-block;
+}
+/*///////////////// 리스트 List.jsp  페이징 끝 ////////////////////*/
+
+
+/*/////////// 리스트 List.jsp search, searchFrm 검색 시작 //////////////*/
+main.list form#searchFrm {	
+	justify-content: flex-end;
+}
+
+main.list form#searchFrm > div {	
+	margin: 4px;
+}
+
+main.list #searchFrm select,
+main.list #searchFrm input,
+main.list #searchFrm button {
+	font-size: 16px;
+	padding: 2px 6px;
+}
+main.list #searchFrm button {
+	font-weight: bold;
+	cursor: pointer;
+}
+/*/////////// 리스트 List.jsp search, searchFrm 검색 끝 ////////////////*/
+
+
+
+
+/*///////////////// 뷰(내용 보기) Read.jsp 시작 ////////////////////*/
+main.read h2 {
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: rgb(255, 128, 128);
+}
+
+main.read table#readTbl {
+	width: 100%;
+	border-collapse: collapse;
+}
+main.read tbody#readTblBody th,
+main.read tbody#readTblBody td {
+	padding: 14px 6px;	
+	border-bottom: 1px solid #eee;
+}
+
+
+                  /*다운로드 시작*/
+ main.read #readTblBody span#downloadFile:hover {
+ 	color: #555; 	
+ 	text-decoration: underline;
+ 	cursor: pointer;
+ 	display: inline-block;
+ 	transform: translateY(-1px);
+ }
+                  /*다운로드 끝*/
+
+
+main.read tbody#readTblBody th:nth-child(2n+1),
+main.read tbody#readTblBody td:nth-child(2n+1) {
+	width: 120px;
+	font-weight: bold;
+	text-align: center;
+	background-color: rgba(220, 220, 220, 0.2);
+} 
+main.read tbody#readTblBody td#readContentTd {
+	text-align: left;
+	vertical-align: top;
+	height: 160px;
+	padding: 20px;
+	background-color: #fff;
+}
+main.read tbody#readTblBody textarea#txtArea {
+	height: 160px;
+	border: none;   /* 테두리 선 제거*/
+	outline: none;   /* 클릭했을 때 나타나는 아웃라인 선 제거*/
+}
+
+main.read td#footTopSpace {
+	height: 30px;
+}
+
+main.read tfoot#readTblFoot td#articleInfoTd {
+	text-align: right;
+}
+main.read tfoot#readTblFoot td#hrTd {
+	height: 30px;
+	vertical-align: top;
+	padding-top: 10px;
+}
+main.read tfoot#readTblFoot hr {
+	border: 2px solid #eee;
+	border-top-color: #ddd;
+}
+main.read tfoot#readTblFoot td#btnAreaTd {
+	text-align: center;
+}
+main.read tfoot#readTblFoot td#btnAreaTd button {
+	width: 110px;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 4px 20px;
+	cursor: pointer;
+}
+/*///////////////// 뷰(내용 보기) Read.jsp 끝 ////////////////////*/
+
+
+
+
+
+/*///////////////// 게시글 삭제 Delete.jsp 시작 ////////////////////*/
+main.delete h2 {
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: rgb(255, 128, 128);
+}
+
+main.delete table#delTbl {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+main.delete table#delTbl tbody td {
+	text-align: center;
+}
+
+main.delete table#delTbl tbody td input[type=password] {
+	font-size: 20px;
+	padding: 10px;
+}
+main.delete tfoot#readTblFoot td#hrTd {
+	height: 30px;
+	vertical-align: top;
+	padding-top: 10px;
+}
+main.delete tfoot#readTblFoot hr {
+	border: 2px solid #eee;
+	border-top-color: #ddd;
+}
+main.delete tfoot#readTblFoot td#btnAreaTd {
+	text-align: center;
+}
+main.delete tfoot#readTblFoot td#btnAreaTd button {
+	width: 110px;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 4px 20px;
+	cursor: pointer;
+}
+/*///////////////// 게시글 삭제 Delete.jsp 끝 ////////////////////*/
+
+
+
+/*///////////////// 게시글 수정 Update.jsp 시작 ////////////////////*/
+
+main.mod h2 {
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: rgb(255, 128, 128);
+}
+
+
+main.mod table#modTbl {
+	width: 100%;
+	border-collapse: collapse;
+}
+main.mod tbody#modTblBody th,
+main.mod tbody#modTblBody td {
+	padding: 14px 6px;	
+	border-bottom: 1px solid #eee;
+}
+
+
+main.mod tbody#modTblBody th:nth-child(1),
+main.mod tbody#modTblBody td:nth-child(1) {
+	width: 120px;
+	font-weight: bold;
+	text-align: center;
+	background-color: rgba(220, 220, 220, 0.2);
+} 
+
+main.mod td.req::after {
+	content: " *";
+	color: #d74;
+	font-weight: bold;
+}
+
+main.mod tbody#modTblBody input {
+	padding: 5px 10px;
+}
+
+main.mod tbody#modTblBody textarea#txtArea {
+	height: 160px;
+	padding: 10px;
+}
+
+main.mod td#footTopSpace {
+	height: 30px;
+}
+
+main.mod tfoot td#hrTd {
+	height: 30px;
+	vertical-align: top;
+	padding-top: 10px;
+}
+main.mod tfoot hr {
+	border: 2px solid #eee;
+	border-top-color: #ddd;
+}
+main.mod tfoot td#btnAreaTd {
+	text-align: center;
+}
+main.mod tfoot td#btnAreaTd button {
+	width: 110px;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 4px 20px;
+	cursor: pointer;
+}
+
+
+
+/*///////////////// 게시글 수정 Update.jsp 끝 ////////////////////*/
+
+
+
+/*///////////////// 게시글 답변 Reply.jsp 시작 ////////////////////*/
+
+main.reply h2 {
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: rgb(255, 128, 128);
+}
+
+
+main.reply table#replyTbl {
+	width: 100%;
+	border-collapse: collapse;
+}
+main.reply tbody#replyTblBody th,
+main.reply tbody#replyTblBody td {
+	padding: 14px 6px;	
+	border-bottom: 1px solid #eee;
+}
+
+
+main.reply tbody#replyTblBody th:nth-child(1),
+main.reply tbody#replyTblBody td:nth-child(1) {
+	width: 120px;
+	font-weight: bold;
+	text-align: center;
+	background-color: rgba(220, 220, 220, 0.2);
+} 
+
+main.reply td.req::after {
+	content: " *";
+	color: #d74;
+	font-weight: bold;
+}
+
+main.reply tbody#replyTblBody input {
+	padding: 5px 10px;
+}
+
+main.reply tbody#replyTblBody textarea#txtArea{
+	height: 160px;
+	padding: 10px;
+}
+
+main.reply tbody#replyTblBody textarea#ori_TxtArea {
+	height: 160px;
+	padding: 10px;
+	border: 1px solid #ccc !important;	
+} 
+
+main.reply span.ori_Txt {
+	font-size: 13px;
+	margin-left: 4px;
+}
+
+main.reply span.ori_Txt::before {
+	content: "•";
+}
+
+main.reply span#ori_SpanTxtArea {	
+	margin: 10px 0 4px 6px;
+	display: block;
+}
+
+main.reply td#footTopSpace {
+	height: 30px;
+}
+
+main.reply tfoot td#hrTd {
+	height: 30px;
+	vertical-align: top;
+	padding-top: 10px;
+}
+main.reply tfoot hr {
+	border: 2px solid #eee;
+	border-top-color: #ddd;
+}
+main.reply tfoot td#btnAreaTd {
+	text-align: center;
+}
+main.reply tfoot td#btnAreaTd button {
+	width: 110px;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 4px 20px;
+	cursor: pointer;
+}
+
+
+
+/*///////////////// 게시글 답변 Reply.jsp 끝 ////////////////////*/
+
+
+
+
+.butcs {
+	text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 4px 10px;
+    cursor: pointer;
+    transform: translateY(2px);
+    border: none;
+    background: #fff;
+    color:#000;
+    margin-top: 10px;
+    opacity: 60%;
+}
+.butcs:hover{
+    opacity: 100%;
+}
+
+
+
+
+
+
+

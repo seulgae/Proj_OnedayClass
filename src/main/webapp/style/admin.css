@@ -1,0 +1,113 @@
+@charset "UTF-8";
+@import url(style_Reset.css);
+@import url(style.css);
+
+#main div#adManu{
+    text-align: center;
+    justify-content: center;
+}
+#main div#adManu ul{
+	padding: 20px;
+} 
+#main div#adManu ul>li{
+	padding: 35px;
+}
+#main div#adManu li.mainAdMenu .subContainer ul.subAdMenu2 li.subAdMenuLi {
+	padding: 0px;
+	margin: 0px;
+}
+#main div#adManu li.mainAdMenu{
+    width: 50%;
+    height: 10%;
+    display: inline-block;
+}
+
+#main div#adManu li.mainAdMenu>a {
+    width: 100%;
+    /* border: 1px solid #000; */
+    display: inline-block;
+}
+
+#main div#adManu li.mainAdMenu:nth-child(2)>a{
+    border-left: none;
+    border-right: none;
+    
+}
+
+#main div#adManu li.mainAdMenu div.subContainer {
+    display: none;
+    
+}
+/* #main div#adManu li.mainAdMenu .subContainer ul.subAdMenu2 {
+    border: 1px solid #000;
+    border-top: none;
+} */
+
+#main div#adManu li.mainAdMenu .subContainer ul.subAdMenu2 li.subAdMenuLi {
+    width: 100%;
+
+}
+
+#main div#adManu li.mainAdMenu .subContainer ul.subAdMenu2 li.subAdMenuLi a {
+    padding: -25px;
+    display: inline-block;
+}
+
+/* #main div#adManu li.mainAdMenu .subContainer ul.subAdMenu2 li.subAdMenuLi:first-child{
+    border-right: 1px solid #000;
+} */
+
+#main div#adManu li{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 4px 10px;
+    cursor: pointer;
+    transform: translateY(2px);
+    border: none;
+    background: #fff;
+    color: #000;
+    margin-top: 10px;
+    opacity: 60%;
+}
+#main div#adManu li:hover{
+    opacity: 100%;
+}
+#main div#adManu li a:hover{
+	color: #FF8080;
+}
+main#main table{
+	    width: 600px;
+	    margin: 0 auto;
+	    margin-top: 100px;
+	    margin-bottom:-20px;
+}
+table {
+    width: 100%;
+}
+th, td {
+    padding: 10px 6px;
+    font-weight: bold;
+}
+table>caption {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 30px;
+    margin-bottom: 40px;
+    position: relative;
+}
+caption>h3{
+    position: absolute;
+    top: 45%;
+    left: 36%;
+    background: #fff;
+    transform: translateY(-50%);
+    padding: 10px;
+}
+div#include{
+	margin-top: 50px;
+}
+
+hr {
+	margin: 0 auto;
+	width: 600px;
+}

@@ -1,0 +1,132 @@
+@charset "UTF-8";
+@import url(style_Reset.css);
+
+/* header#header 시작 */
+header#header {
+    width: 55%;
+    margin: 10px auto;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+#header #headerLogo img {
+	width: 40%;
+}
+
+#header #headerRight ul>li:nth-child(2n) {
+    width: 2px;
+    height: 20px;
+    background-color: #555;
+    margin: 0 20px;
+    transform: translateY(1px);
+}
+
+#header #headerRight #headerCart {
+    position: relative;
+}
+
+#header #headerRight #headerCart img {
+    position: absolute;
+    right: -7px;
+    top: -5px;
+}
+/* header#header 끝 */
+
+/* nav#gnb 시작 */
+nav#gnb {
+    width: 60%;
+    margin: 0 auto;
+}
+
+nav#gnb ul {
+    justify-content: center;
+    align-items: center;
+}
+
+nav#gnb ul li {
+    padding: 40px;
+
+    display: inline-block;
+}
+
+nav#gnb ul li.active {
+    border-bottom: 3px solid #000;
+}
+
+nav#gnb ul li:hover a {
+    border-bottom: 1px solid #000;
+}
+/* nav#gnb 끝 */
+
+/* div#slide 시작 */
+
+div#slide {    /* 이미지 1개의 크기를 적용 */
+    width: 1500px;
+    height: 500px;
+
+    margin: 20px auto;
+    overflow: hidden; 
+         /* 부모요소 영역보다 더 큰 자식요소의 
+         범람한 외부영역을 숨겨줌*/
+    /* 슬라이드쇼 방향키의 위치기준을 
+    적용하기 위한 포지션 */
+    position: relative;   
+}
+div.swiper-button-prev,
+div.swiper-button-next{
+	color:#ec665d;
+}
+
+/* div#slide 끝 */
+
+/* footer#footer 시작 */
+
+footer#footer {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* div#footerTop 시작 */
+#footerTop nav#footerLnbArea {
+    padding: 10px;
+    flex: 1;
+}
+
+#footerTop nav#footerLnbArea ul {
+    justify-content: center;
+    margin-bottom: 6px;
+}
+
+#footerTop nav#footerLnbArea li:nth-child(2n) {
+    width: 1px;
+    height: 16px;
+    background-color: #555;
+    margin: 0 14px;
+    transform: translateY(2px);
+}
+/* div#footerTop 끝 */
+
+/* div#footerBottom 시작 */
+#footerBottom nav#footerArea {
+    padding: 10px;
+    flex: 1;
+}
+
+#footerBottom nav#footerArea ul {
+    justify-content: center;
+    margin-bottom: 6px;
+}
+
+#footerBottom li:not(:last-of-type):after {
+	content: "";
+	display: inline-block;
+	width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 10px 0 15px;
+    vertical-align: middle;
+}
+
+/* div#footerBottom 끝 */
+/* footer#footer 끝 */

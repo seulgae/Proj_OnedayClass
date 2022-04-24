@@ -1,0 +1,102 @@
+@charset "UTF-8";
+@import url(../style_Reset.css);
+@import url(../style.css);
+
+* {
+    box-sizing: border-box;
+}
+div#classbbs{
+	width: 1000px;
+    padding: 15px;
+    /* border-top: 1px solid #000; */
+    /* border-bottom: 1px solid #000; */
+    margin: 80px auto;
+}
+table {
+    width: 100%;
+}
+th, td {
+    padding: 15px 6px;
+    font-weight: bold;
+    /* border: 1px solid #000; */
+}
+td:first-child {
+    text-align: left;
+}
+td.req::before { 
+    content: " *";
+    color: #ec665d;
+    font-size: 20px;
+    padding: 5px;
+}
+
+td.reqNull::before { 
+    content: " *";
+    color: #fff;
+    font-size: 20px;
+    padding: 5px;
+}
+
+input {
+    font-size: 14px;
+    padding: 4px 10px;
+}
+input.umem {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+}
+input.loginInput{
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+}
+input.umem:hover{
+    border-bottom: 1px solid #ec665d;
+}
+
+select{
+	font-size: 20px;
+	
+}
+button {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 10px;
+    cursor: pointer;
+    transform: translateY(1px);
+    border: none;
+    opacity: 50%;
+    border: 1px solid #ddd;
+}
+
+td.button{
+	text-align: center;
+}
+
+button:hover{
+    opacity: 100%;
+}
+
+button{
+    width: 300px;
+    font-size: 25px;
+}
+
+button.classbutton{
+	width: 300px;
+	height: 60px;
+	text-align: center;
+	background-color: #fbceb1;
+}
+
+div#chk span{
+    padding: 10px;
+}
+div#chk input{
+    margin: 10px;
+}
+
+footer#footer{
+    border-top: 1px solid #ddd;
+}
