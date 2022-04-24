@@ -5,3 +5,6 @@
 3. 페이지별 css 보완
 4. DB설계 보완
 5. 코드 주석 정리 및 최적화
+
+# Project 동작영상.
+https://www.youtube.com/watch?v=kDs0r3Ea3LI
