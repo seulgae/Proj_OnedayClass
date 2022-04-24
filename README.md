@@ -1,2 +1,6 @@
-# 1213_OnedayClassProject
-Team Project
+# 원데이클래스 Jsp model1 ver.
+4/24 ~ 계획.
+1. 중복확인 부분 버그 수정
+2. 페이지별 css 보완
+3. DB설계 보완
+4. 코드 주석 정리 및 최적화
