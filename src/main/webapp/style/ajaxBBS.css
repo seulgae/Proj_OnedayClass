@@ -168,25 +168,6 @@ main.list th {
 	background-color: #eee;
 }
 
-
-/* main.list th:first-child,
-main.list th:last-child {
-	width: 50px;
-}
-main.list th:nth-child(2) {
-	width: 60px;
-}
-
-
-main.list th:nth-child(4) {
-	width: 50px;
-}
-main.list th:nth-child(5) {
-	width: 85px;
-}
-main.list th:nth-child(6) {
-	width: 50px;
-}  */
 main.list th:nth-child(1) {
 	width: 10%;
 }
@@ -611,13 +592,7 @@ main.reply tfoot td#btnAreaTd button {
 	padding: 4px 20px;
 	cursor: pointer;
 }
-
-
-
 /*///////////////// 게시글 답변 Reply.jsp 끝 ////////////////////*/
-
-
-
 
 .butcs {
 	text-align: right;

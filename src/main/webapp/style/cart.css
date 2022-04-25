@@ -7,16 +7,17 @@ main.cart{
 	width: 100%;
 	margin-bottom: 100px;
 }
+
 main.cart h1{
 	margin-bottom: 50px;
 	text-align: center;
 }
+
 div#cartcontent {
 	width: 60%;
 	margin: 0 auto;
-	
+}
 
-	}
 div#cartcontent div#cartlist{
 	flex : 1;
 }
@@ -59,9 +60,6 @@ table#goodslist button.btnminus{
 	cursor: pointer;
 }
 
-
-
-
 div#paylist table thead th {
 	width: 115px;
 	padding: 10px;
@@ -70,7 +68,6 @@ div#paylist table thead th {
 	font-size: 18px;
 	
 }
-
 
 div#cartcontent div#paylist{
 	width: 40%;

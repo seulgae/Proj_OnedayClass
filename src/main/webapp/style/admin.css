@@ -38,10 +38,6 @@
     display: none;
     
 }
-/* #main div#adManu li.mainAdMenu .subContainer ul.subAdMenu2 {
-    border: 1px solid #000;
-    border-top: none;
-} */
 
 #main div#adManu li.mainAdMenu .subContainer ul.subAdMenu2 li.subAdMenuLi {
     width: 100%;
@@ -52,10 +48,6 @@
     padding: -25px;
     display: inline-block;
 }
-
-/* #main div#adManu li.mainAdMenu .subContainer ul.subAdMenu2 li.subAdMenuLi:first-child{
-    border-right: 1px solid #000;
-} */
 
 #main div#adManu li{
     font-size: 30px;

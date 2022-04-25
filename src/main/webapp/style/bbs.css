@@ -2,11 +2,9 @@
 @import url(style_Reset.css);
 @import url(style.css);
 
-
 div#wrap {
 
 }
-
 
 /*///////////////// 템플릿 시작 ////////////////////*/
 #wrap>main#main {
