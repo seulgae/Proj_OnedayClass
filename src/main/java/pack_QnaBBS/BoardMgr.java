@@ -24,14 +24,6 @@ import pack_Util.UtilMgr;
 public class BoardMgr {
 
 	private DBConnectionMgr pool;
-	/* private static final String SAVEFOLER = "E:/IT/Team Project (Oneday Class)/Proj_OnedayClass/src/main/webapp/fileUpload";
-	 * 
-	 * 
-	 */
-	// 수식어 static final 이 함께 사용된 필드를 상수필드라고함.
-	// 상수필드는 선언과 동시에 반드시 초기화해야 함.
-	// 필드명은 모두 대문자, 단어간 연결은 밑줄
-	// 재초기화 안됨
 
 	private static String encType = "UTF-8";
 	private static int maxSize = 5 * 1024 * 1024;
@@ -55,7 +47,7 @@ public class BoardMgr {
 		MultipartRequest multi = null;
 		int qFileSize = 0;
 		String qFileName = null;
-		String path= req.getServletContext().getRealPath("/src/main/webapp/fileUpload/qnaBBS/");
+		String path = req.getServletContext().getRealPath("/src/main/webapp/fileUpload/qnaBBS/");
 		path = UtilMgr.replace(path, ".metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\", "");
 
 		try {
@@ -114,7 +106,7 @@ public class BoardMgr {
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRs);
 		}
-		
+
 	}
 ///////////////  게시판 입력(PostProc.jsp) 끝    ///////////////	
 
@@ -133,41 +125,37 @@ public class BoardMgr {
 
 		try {
 			objConn = pool.getConnection(); // DB연동
-			if (uId.equals("admin"))  {
+			if (uId.equals("admin")) {
 				if (keyWord.equals("null") || keyWord.equals("")) {
 					// 검색어가 없을 경우
-					sql = "select * from qnaBBS where qStatus<=3 "
-							+ "order by qRef desc, qPos asc limit ?, ?";
+					sql = "select * from qnaBBS where qStatus<=3 " + "order by qRef desc, qPos asc limit ?, ?";
 					objPstmt = objConn.prepareStatement(sql);
 					objPstmt.setInt(1, start);
 					objPstmt.setInt(2, end);
 				} else {
 					// 검색어가 있을 경우
-					sql = "select * from qnaBBS "
-							+ "where " + keyField + " like ? AND qStatus<=3 "
+					sql = "select * from qnaBBS " + "where " + keyField + " like ? AND qStatus<=3 "
 							+ "order by qRef desc, qPos asc limit ?, ?";
 					objPstmt = objConn.prepareStatement(sql);
 					objPstmt.setString(1, "%" + keyWord + "%");
 					objPstmt.setInt(2, start);
 					objPstmt.setInt(3, end);
-					}
+				}
 			} else {
-			if (keyWord.equals("null") || keyWord.equals("")) {
-				// 검색어가 없을 경우
-				sql = "select * from qnaBBS where qStatus<3 "
-						+ "order by qRef desc, qPos asc limit ?, ?";
-				objPstmt = objConn.prepareStatement(sql);
-				objPstmt.setInt(1, start);
-				objPstmt.setInt(2, end);
-			} else {
-				// 검색어가 있을 경우
-				sql = "select * from qnaBBS "
-						+ "where " + keyField + " like ? AND qStatus<3 "
-						+ "order by qRef desc, qPos asc limit ?, ?";
-				objPstmt = objConn.prepareStatement(sql);
-				objPstmt.setString(1, "%" + keyWord + "%");
-				objPstmt.setInt(2, start);
-				objPstmt.setInt(3, end);
+				if (keyWord.equals("null") || keyWord.equals("")) {
+					// 검색어가 없을 경우
+					sql = "select * from qnaBBS where qStatus<3 " + "order by qRef desc, qPos asc limit ?, ?";
+					objPstmt = objConn.prepareStatement(sql);
+					objPstmt.setInt(1, start);
+					objPstmt.setInt(2, end);
+				} else {
+					// 검색어가 있을 경우
+					sql = "select * from qnaBBS " + "where " + keyField + " like ? AND qStatus<3 "
+							+ "order by qRef desc, qPos asc limit ?, ?";
+					objPstmt = objConn.prepareStatement(sql);
+					objPstmt.setString(1, "%" + keyWord + "%");
+					objPstmt.setInt(2, start);
+					objPstmt.setInt(3, end);
 				}
 			}
 			objRs = objPstmt.executeQuery();
@@ -243,109 +231,105 @@ public class BoardMgr {
 ///////////////////////////////////////////////////////////////////
 
 ///////////////  ajax 게시판 리스트 출력(List.jsp) 시작    ///////////////
-public Vector<BoardBean> getAjaxBoardList(String keyField, String keyWord, int start, int end, int cNum) {
+	public Vector<BoardBean> getAjaxBoardList(String keyField, String keyWord, int start, int end, int cNum) {
 
-Vector<BoardBean> vList = new Vector<>();
-Connection objConn = null;
-PreparedStatement objPstmt = null;
-ResultSet objRs = null;
-String sql = null;
+		Vector<BoardBean> vList = new Vector<>();
+		Connection objConn = null;
+		PreparedStatement objPstmt = null;
+		ResultSet objRs = null;
+		String sql = null;
 
-try {
-objConn = pool.getConnection(); // DB연동
+		try {
+			objConn = pool.getConnection(); // DB연동
 
-if (keyWord.equals("null") || keyWord.equals("")) {
+			if (keyWord.equals("null") || keyWord.equals("")) {
 // 검색어가 없을 경우
-sql = "select * from qnaBBS where qStatus<3 AND cNum=? "
-+ "order by qRef desc, qPos asc limit ?, ?";
-objPstmt = objConn.prepareStatement(sql);
-objPstmt.setInt(1, cNum);
-objPstmt.setInt(2, start);
-objPstmt.setInt(3, end);
-} else {
+				sql = "select * from qnaBBS where qStatus<3 AND cNum=? " + "order by qRef desc, qPos asc limit ?, ?";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setInt(1, cNum);
+				objPstmt.setInt(2, start);
+				objPstmt.setInt(3, end);
+			} else {
 // 검색어가 있을 경우
-sql = "select * from qnaBBS "
-+ "where " + keyField + " like ? AND qStatus<3 AND cNum=? "
-+ "order by qRef desc, qPos asc limit ?, ?";
-objPstmt = objConn.prepareStatement(sql);
-objPstmt.setString(1, "%" + keyWord + "%");
-objPstmt.setInt(2, cNum);
-objPstmt.setInt(3, start);
-objPstmt.setInt(4, end);
-}
+				sql = "select * from qnaBBS " + "where " + keyField + " like ? AND qStatus<3 AND cNum=? "
+						+ "order by qRef desc, qPos asc limit ?, ?";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setString(1, "%" + keyWord + "%");
+				objPstmt.setInt(2, cNum);
+				objPstmt.setInt(3, start);
+				objPstmt.setInt(4, end);
+			}
 
-objRs = objPstmt.executeQuery();
+			objRs = objPstmt.executeQuery();
 
-while (objRs.next()) {
-BoardBean bean = new BoardBean();
-bean.setqNum(objRs.getInt("qNum"));
-bean.setqUid(objRs.getString("qUid"));
-bean.setqTitle(objRs.getString("qTitle"));
-bean.setqPos(objRs.getInt("qPos"));
-bean.setqRef(objRs.getInt("qRef"));
-bean.setqDepth(objRs.getInt("qDepth"));
-bean.setqOriUid(objRs.getString("qOriUid"));
-bean.setqRegDate(objRs.getString("qRegDate"));
-bean.setqStatus(objRs.getInt("qStatus"));
-vList.add(bean);
-}
-} catch (Exception e) {
-System.out.println("SQL이슈3 : " + e.getMessage());
-} finally {
-pool.freeConnection(objConn, objPstmt, objRs);
-}
+			while (objRs.next()) {
+				BoardBean bean = new BoardBean();
+				bean.setqNum(objRs.getInt("qNum"));
+				bean.setqUid(objRs.getString("qUid"));
+				bean.setqTitle(objRs.getString("qTitle"));
+				bean.setqPos(objRs.getInt("qPos"));
+				bean.setqRef(objRs.getInt("qRef"));
+				bean.setqDepth(objRs.getInt("qDepth"));
+				bean.setqOriUid(objRs.getString("qOriUid"));
+				bean.setqRegDate(objRs.getString("qRegDate"));
+				bean.setqStatus(objRs.getInt("qStatus"));
+				vList.add(bean);
+			}
+		} catch (Exception e) {
+			System.out.println("SQL이슈3 : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRs);
+		}
 
-return vList;
-}
+		return vList;
+	}
 
 ///////////////  게시판 리스트 출력(List.jsp) 끝    ///////////////
 
 //////////////////총 게시물 수(List.jsp) 시작 //////////////////
-public int getAjaxTotalCount(String keyField, String keyWord, int cNum) {
+	public int getAjaxTotalCount(String keyField, String keyWord, int cNum) {
 
-Connection objConn = null;
-PreparedStatement objPstmt = null;
-ResultSet objRs = null;
-String sql = null;
-int totalCnt = 0;
+		Connection objConn = null;
+		PreparedStatement objPstmt = null;
+		ResultSet objRs = null;
+		String sql = null;
+		int totalCnt = 0;
 
-try {
-objConn = pool.getConnection(); // DB연동
+		try {
+			objConn = pool.getConnection(); // DB연동
 
-if (keyWord.equals("null") || keyWord.equals("")) {
-sql = "select count(*) from qnaBBS where qStatus<3 AND cNum=? ";
-objPstmt = objConn.prepareStatement(sql);
-objPstmt.setInt(1, cNum);
-} else {
-sql = "select count(*) from qnaBBS ";
-sql += "where " + keyField + " like ? AND qStatus<3 AND cNum=? ";
-objPstmt = objConn.prepareStatement(sql);
-objPstmt.setString(1, "%" + keyWord + "%");
-objPstmt.setInt(2, cNum);
-}
+			if (keyWord.equals("null") || keyWord.equals("")) {
+				sql = "select count(*) from qnaBBS where qStatus<3 AND cNum=? ";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setInt(1, cNum);
+			} else {
+				sql = "select count(*) from qnaBBS ";
+				sql += "where " + keyField + " like ? AND qStatus<3 AND cNum=? ";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setString(1, "%" + keyWord + "%");
+				objPstmt.setInt(2, cNum);
+			}
 
-objRs = objPstmt.executeQuery();
+			objRs = objPstmt.executeQuery();
 
-if (objRs.next()) {
-totalCnt = objRs.getInt(1);
-}
+			if (objRs.next()) {
+				totalCnt = objRs.getInt(1);
+			}
 
-} catch (Exception e) {
-System.out.println("SQL이슈4 : " + e.getMessage());
-} finally {
-pool.freeConnection(objConn, objPstmt, objRs);
-}
+		} catch (Exception e) {
+			System.out.println("SQL이슈4 : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRs);
+		}
 
-return totalCnt;
-}
+		return totalCnt;
+	}
 //////////////////총 게시물 수(List.jsp) 끝 //////////////////
 
 ///////////////////////////////////////////////////////////////////
 /////////////// ajax 게시판 리스트 작업관련(List.jsp) 끝  ///////////////
 ///////////////////////////////////////////////////////////////////
-	
-	
-	
+
 ////////  게시판 뷰페이지 출력(Read.jsp, 내용보기 페이지) 시작 ////////
 
 	public BoardBean getBoard(int qNum) {
@@ -388,7 +372,7 @@ return totalCnt;
 
 	public void downLoad(HttpServletRequest req, HttpServletResponse res, JspWriter out, PageContext pageContext) {
 		String qFileName = req.getParameter("qFileName"); // 다운로드할 파일 매개변수명 일치
-		String path= req.getServletContext().getRealPath("/src/main/webapp/fileUpload/qnaBBS/");
+		String path = req.getServletContext().getRealPath("/src/main/webapp/fileUpload/qnaBBS/");
 		path = UtilMgr.replace(path, ".metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\", "");
 		try {
 			File file = new File(UtilMgr.con(path + File.separator + qFileName));
@@ -434,21 +418,6 @@ return totalCnt;
 
 		try {
 			objConn = pool.getConnection(); // DB연동
-
-			/*
-			 * //////////// 게시글의 파일 삭제 시작 /////////////// sql =
-			 * "select qFileName from qnaBBS where qNum=?"; objPstmt =
-			 * objConn.prepareStatement(sql); objPstmt.setInt(1, qNum); objRs =
-			 * objPstmt.executeQuery();
-			 * 
-			 * if (objRs.next() && objRs.getString(1) != null) { if
-			 * (!objRs.getString(1).equals("")) { String fName = objRs.getString(1); String
-			 * fileSrc = SAVEFOLER + "/" + fName; File file = new File(fileSrc);
-			 * 
-			 * if (file.exists()) file.delete(); // 파일 삭제 실행
-			 * 
-			 * } } //////////// 게시글의 파일 삭제 끝 ///////////////
-			 */
 
 			//////////// 게시글 삭제 시작 ///////////////
 			sql = "update qnaBBS set qStatus=3 where qRef=?";

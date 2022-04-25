@@ -54,7 +54,6 @@ public class MemberMgr {
 /////////////   Member.jsp ID  중복확인 끝 /////////////////////
 ///////////////////////////////////////////////////////////////////
 
-
 ///////////////////////////////////////////////////////////////////	
 ///////////// MemberProc.jsp 회원가입 시작 //////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -81,7 +80,7 @@ public class MemberMgr {
 			objPstmt.setString(6, bean.getuAddr1());
 			objPstmt.setString(7, bean.getuAddr2());
 			objPstmt.setString(8, bean.getuEmail());
-			
+
 			int cnt = objPstmt.executeUpdate();
 			if (cnt > 0)
 				flag = true;
@@ -100,9 +99,9 @@ public class MemberMgr {
 ///////////////////////////////////////////////////////////////////	
 ///////////// MemberProc.jsp 회원가입 끝 //////////////////////
 ///////////////////////////////////////////////////////////////////
-	
+
 ///////////// 로그인 사용자 이름 반환(Login.jsp) 시작 //////////////////////	
-	
+
 	public String[] getMemberStat(String uId) {
 
 		String[] uStat = new String[2];
@@ -114,27 +113,27 @@ public class MemberMgr {
 		String sql = null;
 
 		try {
-		objConn = pool.getConnection();
-		sql = "select uName, uLevel from memberlist where uId=?";
-		objPstmt = objConn.prepareStatement(sql);
-		objPstmt.setString(1, uId);
+			objConn = pool.getConnection();
+			sql = "select uName, uLevel from memberlist where uId=?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uId);
 
-		objRs = objPstmt.executeQuery();
-		if (objRs.next()) {
-		    uStat[0] = objRs.getNString(1);
-		    uStat[1] = objRs.getNString(2);
-		}
+			objRs = objPstmt.executeQuery();
+			if (objRs.next()) {
+				uStat[0] = objRs.getNString(1);
+				uStat[1] = objRs.getNString(2);
+			}
 
 		} catch (Exception e) {
 
-		System.out.println("SQL 이슈 : " + e.getMessage());
+			System.out.println("SQL 이슈 : " + e.getMessage());
 
 		} finally {
-		pool.freeConnection(objConn, objPstmt, objRs);
+			pool.freeConnection(objConn, objPstmt, objRs);
 		}
 
 		return uStat;
-		}
+	}
 
 /////////// 로그인 사용자 이름 반환(Login.jsp) 끝 //////////////////////	
 
@@ -233,7 +232,8 @@ public class MemberMgr {
 ///////////////////////////////////////////////////////////////////	
 /////// Member_ModProc.jsp 회원정보 수정 시작 /////////////
 ///////////////////////////////////////////////////////////////////	
-	public boolean modifyMember(String uPw, String uPhone, String uZip, String uAddr1, String uAddr2, String uEmail, String uId) {
+	public boolean modifyMember(String uPw, String uPhone, String uZip, String uAddr1, String uAddr2, String uEmail,
+			String uId) {
 
 		Connection objConn = null;
 		PreparedStatement objPstmt = null;
@@ -268,15 +268,13 @@ public class MemberMgr {
 			pool.freeConnection(objConn, objPstmt);
 		}
 
-			return flag;
+		return flag;
 	}
 
 ///////////////////////////////////////////////////////////////////	
 /////// Member_ModProc.jsp 회원정보 수정 끝 /////////////
 ///////////////////////////////////////////////////////////////////
 
-	
-	
 ///////////////////////////////////////////////////////////////////	
 ////////////// Member_Del.jsp 회원탈퇴 시작 ////////////////////
 ///////////////////////////////////////////////////////////////////	
@@ -293,7 +291,7 @@ public class MemberMgr {
 			sql = "delete from memberlist where uId = ?";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, uId);
-			
+
 			int cnt = objPstmt.executeUpdate();
 			if (cnt > 0)
 				flag = true; // update가 정상실행되었음을 의미

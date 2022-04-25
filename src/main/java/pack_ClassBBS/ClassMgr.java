@@ -27,12 +27,9 @@ public class ClassMgr {
 
 	private DBConnectionMgr pool;
 
-	// private static final String THUMSAVEFOLER =
-	// "D:/GTH/silsp/EZ_Project/Proj_OnedayClass/src/main/webapp/fileupload/classfileupload/thumbnail";
-
 	private static String encType = "UTF-8";
 	private static int maxSize = 10 * 1024 * 1024;
-	// 파일크기 : 5MB
+	// 파일크기 : 10MB
 
 	public ClassMgr() {
 		try {
@@ -106,34 +103,25 @@ public class ClassMgr {
 			// 다중업로드
 			sql = "insert into classbbs(";
 			sql += "cCode, cTeacher, cUid, cCategory, cTitle, cContent, cRegDate, cPrice, cDelivery, ";
-			// ?, ?, ?, ?, ?, now(), ?, ?
 			sql += "cThumbName, cThumbSize, cFileName, cFileSize, ";
-			// ?, ?, ?, ?
 			sql += "cMaxStu, cApplyStu, cOnoff, cArea, cStatus, cLikes) values (";
-			// ?, 0, ?, ?, 1
 			sql += " ?, ?, ?, ?, ?, ?, now(), ?, ?, ";
 			sql += "?, ?, ?, ?, ";
 			sql += "?, 0, ?, ?, 1, 0)";
 
 			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setString(1, cCode); // 코드
-			objPstmt.setString(2, multi.getParameter("cTeacher")); // 강사이름
-			objPstmt.setString(3, multi.getParameter("cUid")); // 강사닉네임
-			objPstmt.setString(4, multi.getParameter("cCategory")); // 클래스 종류
-			objPstmt.setString(5, multi.getParameter("cTitle")); // 클래스 제목
-			objPstmt.setString(6, cContent); // 클래스 설명
-			// cRegDate -> now()
-			// Integer.parseInt(multi.getParameter("cPrice"))
+			objPstmt.setString(1, cCode);
+			objPstmt.setString(2, multi.getParameter("cTeacher")); 
+			objPstmt.setString(3, multi.getParameter("cUid")); 
+			objPstmt.setString(4, multi.getParameter("cCategory")); 
+			objPstmt.setString(5, multi.getParameter("cTitle"));
+			objPstmt.setString(6, cContent);
 			objPstmt.setInt(7, Integer.parseInt(multi.getParameter("cPrice")));
 			objPstmt.setInt(8, Integer.parseInt(multi.getParameter("cDelivery")));
-			// ------------------------------------------------------------------//
-
 			objPstmt.setString(9, cThumbName);
 			objPstmt.setInt(10, cThumbSize);
-
 			objPstmt.setString(11, cFileName);
 			objPstmt.setInt(12, cFileSize);
-			// ------------------------------------------------------------------//
 			objPstmt.setInt(13, Integer.parseInt(multi.getParameter("cMaxStu")));
 			objPstmt.setString(14, multi.getParameter("cOnoff"));
 			objPstmt.setString(15, multi.getParameter("cArea"));
@@ -491,7 +479,6 @@ public class ClassMgr {
 
 		try {
 			objConn = pool.getConnection(); // DB연동
-			// sql = "delete from classbbs where cnum=?";
 			sql = "update classbbs set cStatus=3 where cNum=?";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setInt(1, cNum);

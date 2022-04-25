@@ -24,11 +24,6 @@ import pack_Util.UtilMgr;
 public class BoardMgr {
 
 	private DBConnectionMgr pool;
-	//private static final String SAVEFOLER = "E:/Project/1213_OnedayClassProject/src/main/webapp/lvlFileUpLoad";
-	// 수식어 static final 이 함께 사용된 필드를 상수필드라고함.
-	// 상수필드는 선언과 동시에 반드시 초기화해야 함.
-	// 필드명은 모두 대문자, 단어간 연결은 밑줄
-	// 재초기화 안됨
 
 	private static String encType = "UTF-8";
 	private static int maxSize = 5 * 1024 * 1024;
@@ -52,9 +47,9 @@ public class BoardMgr {
 		MultipartRequest multi = null;
 		int lvlFileSize = 0;
 		String lvlFileName = null;
-		String path= req.getServletContext().getRealPath("/src/main/webapp/fileUpload/levelUpBBS/");
-	      path = UtilMgr.replace(path, ".metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\", "");
-			System.out.println(path);
+		String path = req.getServletContext().getRealPath("/src/main/webapp/fileUpload/levelUpBBS/");
+		path = UtilMgr.replace(path, ".metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\", "");
+		System.out.println(path);
 		try {
 			objConn = pool.getConnection();
 			sql = "select max(lvlNum) from levelUpBBS";
@@ -111,44 +106,42 @@ public class BoardMgr {
 
 	}
 ///////////////  게시판 입력(PostProc.jsp) 끝    ///////////////
-	
-	
+
 ///////////// levelUpPost cStatus 변환 시작 //////////////////////	
-	
-public String getlevelUpStat(int lvlNum) {
 
-	String lvlStat = "";
+	public String getlevelUpStat(int lvlNum) {
 
-Connection objConn = null;
-PreparedStatement objPstmt = null;
-ResultSet objRs = null;
+		String lvlStat = "";
 
-String sql = null;
+		Connection objConn = null;
+		PreparedStatement objPstmt = null;
+		ResultSet objRs = null;
 
-try {
-objConn = pool.getConnection();
-sql = "select lvlStatus from levelupbbs where lvlNum=?";
-objPstmt = objConn.prepareStatement(sql);
-objPstmt.setInt(1, lvlNum);
+		String sql = null;
 
-objRs = objPstmt.executeQuery();
-if (objRs.next()) {
-    lvlStat = objRs.getNString(1);	
-}
+		try {
+			objConn = pool.getConnection();
+			sql = "select lvlStatus from levelupbbs where lvlNum=?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, lvlNum);
 
-} catch (Exception e) {
+			objRs = objPstmt.executeQuery();
+			if (objRs.next()) {
+				lvlStat = objRs.getNString(1);
+			}
 
-System.out.println("SQL 이슈 : " + e.getMessage());
+		} catch (Exception e) {
 
-} finally {
-pool.freeConnection(objConn, objPstmt, objRs);
-}
+			System.out.println("SQL 이슈 : " + e.getMessage());
 
-return lvlStat;
-}
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRs);
+		}
+
+		return lvlStat;
+	}
 
 /////////// levelUpPost cStatus 변환 끝 //////////////////////
-
 
 ///////////////////////////////////////////////////////////////////
 ///////////////  게시판 리스트 작업관련(List.jsp) 시작  ///////////////
@@ -162,11 +155,11 @@ return lvlStat;
 		PreparedStatement objPstmt = null;
 		ResultSet objRs = null;
 		String sql = null;
-		
+
 		try {
 			objConn = pool.getConnection(); // DB연동
 
-			if (uId.equals("admin"))  {
+			if (uId.equals("admin")) {
 				if (keyWord.equals("null") || keyWord.equals("")) {
 					// 검색어가 없을 경우
 					sql = "select * from levelupbbs where lvlStatus<=3 "
@@ -176,14 +169,13 @@ return lvlStat;
 					objPstmt.setInt(2, end);
 				} else {
 					// 검색어가 있을 경우
-					sql = "select * from levelupbbs "
-							+ "where "+ keyField +" like ? AND lvlStatus<=3 "
+					sql = "select * from levelupbbs " + "where " + keyField + " like ? AND lvlStatus<=3 "
 							+ "order by lvlRef desc, lvlPos asc limit ?, ?";
 					objPstmt = objConn.prepareStatement(sql);
-					objPstmt.setString(1, "%"+keyWord+"%");
+					objPstmt.setString(1, "%" + keyWord + "%");
 					objPstmt.setInt(2, start);
-					objPstmt.setInt(3, end);				
-				}  
+					objPstmt.setInt(3, end);
+				}
 			} else {
 				if (keyWord.equals("null") || keyWord.equals("")) {
 					// 검색어가 없을 경우
@@ -196,17 +188,17 @@ return lvlStat;
 					objPstmt.setInt(4, end);
 				} else {
 					// 검색어가 있을 경우
-					sql = "select * from levelupbbs "
-							+ "where "+ keyField +" like ? AND lvlUid = ? AND lvlStatus = 1 OR lvlOriUid = ? "
+					sql = "select * from levelupbbs " + "where " + keyField
+							+ " like ? AND lvlUid = ? AND lvlStatus = 1 OR lvlOriUid = ? "
 							+ "order by lvlRef desc, lvlPos asc limit ?, ?";
 					objPstmt = objConn.prepareStatement(sql);
-					objPstmt.setString(1, "%"+keyWord+"%");
+					objPstmt.setString(1, "%" + keyWord + "%");
 					objPstmt.setString(2, uId);
 					objPstmt.setInt(3, start);
 					objPstmt.setInt(4, end);
-				}  
-			} 
-			
+				}
+			}
+
 			objRs = objPstmt.executeQuery();
 
 			while (objRs.next()) {
@@ -236,41 +228,41 @@ return lvlStat;
 ///////////////  게시판 리스트 출력(List.jsp) 끝    ///////////////
 
 //////////////////총 게시물 수(List.jsp) 시작 //////////////////
-public int getTotalCount(String keyField, String keyWord) {
+	public int getTotalCount(String keyField, String keyWord) {
 
-Connection objConn = null;
-PreparedStatement objPstmt = null;
-ResultSet objRs = null;
-String sql = null;
-int totalCnt = 0;
+		Connection objConn = null;
+		PreparedStatement objPstmt = null;
+		ResultSet objRs = null;
+		String sql = null;
+		int totalCnt = 0;
 
-try {
-objConn = pool.getConnection(); // DB연동
+		try {
+			objConn = pool.getConnection(); // DB연동
 
-if(keyWord.equals("null") || keyWord.equals("")) {
-	sql = "select count(*) from levelupbbs";
-	objPstmt = objConn.prepareStatement(sql);
-} else {
-	sql = "select count(*) from levelupbbs";
-	sql += "where "+keyField+" like ?";
-	objPstmt = objConn.prepareStatement(sql);
-	objPstmt.setString(1, "%" + keyWord + "%");
-}
+			if (keyWord.equals("null") || keyWord.equals("")) {
+				sql = "select count(*) from levelupbbs";
+				objPstmt = objConn.prepareStatement(sql);
+			} else {
+				sql = "select count(*) from levelupbbs";
+				sql += "where " + keyField + " like ?";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setString(1, "%" + keyWord + "%");
+			}
 
-objRs = objPstmt.executeQuery();
+			objRs = objPstmt.executeQuery();
 
-if (objRs.next()) {
-	totalCnt = objRs.getInt(1);
-}
+			if (objRs.next()) {
+				totalCnt = objRs.getInt(1);
+			}
 
-} catch (Exception e) {
-System.out.println("SQL이슈4 : " + e.getMessage());
-} finally {
-pool.freeConnection(objConn, objPstmt, objRs);
-}
+		} catch (Exception e) {
+			System.out.println("SQL이슈4 : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRs);
+		}
 
-return totalCnt;
-}
+		return totalCnt;
+	}
 //////////////////총 게시물 수(List.jsp) 끝 //////////////////
 
 ///////////////////////////////////////////////////////////////////
@@ -278,27 +270,6 @@ return totalCnt;
 ///////////////////////////////////////////////////////////////////
 
 ////////  게시판 뷰페이지 출력(Read.jsp, 내용보기 페이지) 시작 ////////
-
-	/*public void upCount(int num) {
-		// 조회수 증가 시작
-		Connection objConn = null;
-		PreparedStatement objPstmt = null;
-		String sql = null;
-
-		try {
-			objConn = pool.getConnection(); // DB연동
-			sql = "update memberlist set uLevel = 2 where uId=?";
-			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setInt(1, num);
-			objPstmt.executeUpdate();
-		
-		} catch (Exception e) {
-			System.out.println("SQL이슈5 : " + e.getMessage());
-		} finally {
-			pool.freeConnection(objConn, objPstmt);
-		}
-
-	} // upCount( ), 조회수 증가 끝*/
 
 	public BoardBean getBoard(int lvlNum) {
 //		뷰페이지 게시글 데이터 반환 시작
@@ -347,8 +318,8 @@ return totalCnt;
 //	public static int len;
 	public void downLoad(HttpServletRequest req, HttpServletResponse res, JspWriter out, PageContext pageContext) {
 		String lvlFileName = req.getParameter("lvlFileName"); // 다운로드할 파일 매개변수명 일치
-		String path= req.getServletContext().getRealPath("/src/main/webapp/fileUpload/levelUpBBS/");
-	      path = UtilMgr.replace(path, ".metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\", "");
+		String path = req.getServletContext().getRealPath("/src/main/webapp/fileUpload/levelUpBBS/");
+		path = UtilMgr.replace(path, ".metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\", "");
 		try {
 			File file = new File(UtilMgr.con(path + File.separator + lvlFileName));
 			byte[] b = new byte[(int) file.length()];
@@ -393,30 +364,6 @@ return totalCnt;
 		try {
 			objConn = pool.getConnection(); // DB연동
 
-			/*//////////// 게시글의 파일 삭제 시작 ///////////////
-			sql = "select lvlFileName from levelupbbs where lvlNum=?";
-			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setInt(1, lvlNum);
-			objRs = objPstmt.executeQuery();
-
-			if (objRs.next() && objRs.getString(1) != null) {
-				if (!objRs.getString(1).equals("")) {
-					String fName = objRs.getString(1);
-					String fileSrc = SAVEFOLER + "/" + fName;
-					File file = new File(fileSrc);
-
-					if (file.exists())
-						file.delete(); // 파일 삭제 실행
-
-				}
-			}
-			//////////// 게시글의 파일 삭제 끝 ///////////////*/
-
-			//////////// 게시글 삭제 시작 ///////////////
-			/*sql = "delete from levelupbbs where lvlNum=?";
-			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setInt(1, lvlNum);
-			exeCnt = objPstmt.executeUpdate();*/
 			sql = "update levelupbbs set lvlStatus=3 where lvlNum=?";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setInt(1, lvlNum);
@@ -441,10 +388,10 @@ return totalCnt;
 		PreparedStatement objPstmt = null;
 		String sql = null;
 		int exeCnt = 0;
-		
+
 		try {
 			objConn = pool.getConnection(); // DB연동
-			
+
 			sql = "update levelupbbs set lvlTitle=?, lvlContent=?, lvlName=?, lvlSns=? where lvlNum=?";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, bean.getLvlTitle());
@@ -466,120 +413,108 @@ return totalCnt;
 
 //////게시글 수정페이지 (UpdateProc.jsp) 끝 ////////	
 
-	
-	
 ///////////// 등업 승인(LvlUpAcProc.jsp) 시작 //////////////////////	
-	
+
 	public boolean AcBoard(String lvlUid, String lvlName, String lvlSns) {
 
 		Connection objConn = null;
 		PreparedStatement objPstmt = null;
 		String sql = null;
 		boolean Acres = true;
-		
+
 		try {
-			objConn = pool.getConnection(); 
-		sql = "update memberlist set uLevel=2, sName=?, sSns=? where uId=?";
-		objPstmt = objConn.prepareStatement(sql);
-		objPstmt.setString(1, lvlName);
-		objPstmt.setString(2, lvlSns);
-		objPstmt.setString(3, lvlUid);
-		objPstmt.executeUpdate();
-		
+			objConn = pool.getConnection();
+			sql = "update memberlist set uLevel=2, sName=?, sSns=? where uId=?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, lvlName);
+			objPstmt.setString(2, lvlSns);
+			objPstmt.setString(3, lvlUid);
+			objPstmt.executeUpdate();
+
 		} catch (Exception e) {
 			System.out.println("SQL이슈8 : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt);
 		}
-		
+
 		return Acres;
-}
-	
-///////////  등업 승인(LvlUpAcProc.jsp) 끝  //////////////////////
-	
-	
-	
-///////// 게시글 답변 페이지 (ReplyProc.jsp) 시작 //////////
-public int replyBoard(BoardBean bean) {
-
-	Connection objConn = null;
-	PreparedStatement objPstmt = null;
-	ResultSet objRs = null;
-	String sql = null;
-	int cnt = 0;
-
-
-	try {
-		objConn = pool.getConnection(); // DB연동
-
-		//////////// 게시글의 파일 삭제 시작 ///////////////
-		sql = "insert into levelupbbs (";
-		sql += "lvlUid, lvlTitle, lvlContent, lvlName, lvlSns, ";
-		sql += "lvlRef, lvlPos, lvlDepth,  ";
-		sql += "lvlRegDate, lvlStatus, lvlOriUid) values (";
-		sql += "?, ?, ?, ?, ?, ?, ?, ?, now(), 1, ?)";
-
-		int lvlDepth = bean.getLvlDepth() + 1;
-		int lvlPos = bean.getLvlPos() + 1;
-		
-		objPstmt = objConn.prepareStatement(sql);
-		objPstmt.setString(1, bean.getLvlUid());
-		objPstmt.setString(2, bean.getLvlTitle());
-		objPstmt.setString(3, bean.getLvlContent());
-		objPstmt.setString(4, bean.getLvlName());
-		objPstmt.setString(5, bean.getLvlSns());
-		objPstmt.setInt(6, bean.getLvlRef());
-		objPstmt.setInt(7, lvlPos);
-		objPstmt.setInt(8, lvlDepth);
-		objPstmt.setString(9, bean.getLvlOriUid());
-		cnt = objPstmt.executeUpdate();
-
-
-	} catch (Exception e) {
-		System.out.println("SQL이슈9 : " + e.getMessage());
-	} finally {
-		pool.freeConnection(objConn, objPstmt, objRs);
 	}
 
-	return cnt;  // DB에 실제 입력된 데이터 수(= Row Count) 반환
-}
+///////////  등업 승인(LvlUpAcProc.jsp) 끝  //////////////////////
 
+///////// 게시글 답변 페이지 (ReplyProc.jsp) 시작 //////////
+	public int replyBoard(BoardBean bean) {
 
+		Connection objConn = null;
+		PreparedStatement objPstmt = null;
+		ResultSet objRs = null;
+		String sql = null;
+		int cnt = 0;
+
+		try {
+			objConn = pool.getConnection(); // DB연동
+
+			//////////// 게시글의 파일 삭제 시작 ///////////////
+			sql = "insert into levelupbbs (";
+			sql += "lvlUid, lvlTitle, lvlContent, lvlName, lvlSns, ";
+			sql += "lvlRef, lvlPos, lvlDepth,  ";
+			sql += "lvlRegDate, lvlStatus, lvlOriUid) values (";
+			sql += "?, ?, ?, ?, ?, ?, ?, ?, now(), 1, ?)";
+
+			int lvlDepth = bean.getLvlDepth() + 1;
+			int lvlPos = bean.getLvlPos() + 1;
+
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, bean.getLvlUid());
+			objPstmt.setString(2, bean.getLvlTitle());
+			objPstmt.setString(3, bean.getLvlContent());
+			objPstmt.setString(4, bean.getLvlName());
+			objPstmt.setString(5, bean.getLvlSns());
+			objPstmt.setInt(6, bean.getLvlRef());
+			objPstmt.setInt(7, lvlPos);
+			objPstmt.setInt(8, lvlDepth);
+			objPstmt.setString(9, bean.getLvlOriUid());
+			cnt = objPstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("SQL이슈9 : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRs);
+		}
+
+		return cnt; // DB에 실제 입력된 데이터 수(= Row Count) 반환
+	}
 
 /////////////// 답변글 끼어들기 메서드 시작 ///////////////
-public int replyUpBoard(int lvlRef, int lvlPos) {
+	public int replyUpBoard(int lvlRef, int lvlPos) {
 
-	Connection objConn = null;
-	PreparedStatement objPstmt = null;
-	ResultSet objRs = null;
-	String sql = null;
-	int cnt = 0;
-	
+		Connection objConn = null;
+		PreparedStatement objPstmt = null;
+		ResultSet objRs = null;
+		String sql = null;
+		int cnt = 0;
 
-	try {
-		objConn = pool.getConnection(); // DB연동
+		try {
+			objConn = pool.getConnection(); // DB연동
 
-		//////////// 게시글의 파일 삭제 시작 ///////////////
-		sql = "update levelupbbs set lvlPos = lvlPos + 1 ";
-		sql += "where lvlRef = ? and lvlPos > ?";
-		
-		objPstmt = objConn.prepareStatement(sql);
-		objPstmt.setInt(1, lvlRef);
-		objPstmt.setInt(2, lvlPos);
-		cnt = objPstmt.executeUpdate();
+			//////////// 게시글의 파일 삭제 시작 ///////////////
+			sql = "update levelupbbs set lvlPos = lvlPos + 1 ";
+			sql += "where lvlRef = ? and lvlPos > ?";
 
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, lvlRef);
+			objPstmt.setInt(2, lvlPos);
+			cnt = objPstmt.executeUpdate();
 
-	} catch (Exception e) {
-		System.out.println("SQL이슈 10: " + e.getMessage());
-	} finally {
-		pool.freeConnection(objConn, objPstmt, objRs);
+		} catch (Exception e) {
+			System.out.println("SQL이슈 10: " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRs);
+		}
+
+		return cnt;
 	}
-
-	
-	return cnt;
-}	
 /////////////// 답변글 끼어들기 메서드 끝 ///////////////
-
 
 ///////// 게시글 답변 페이지 (ReplyProc.jsp) 끝 //////////
 
