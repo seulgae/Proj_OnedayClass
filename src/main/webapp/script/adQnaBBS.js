@@ -216,41 +216,5 @@ $(function(){
 		
 	});
 	//////////////// Reply.jsp 에서 답변글 버튼 끝 //////////////////		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//////////////// Update.jsp 에서 게시글 수정 시작 //////////////////
-/*	$("td.update>button#modBtn").click(function(){
-
-		let qTitle = $("#qTitle").val().trim();
-		
-		//let keyField = $("#keyField").val().trim();
-		//let keyWord = $("#keyWord").val().trim();
-		
-		if (qTitle == "") {
-			alert("제목은 필수입력입니다.");
-			$("#qTitle").focus();
-		}  else {
-		
-			//alert("keyField : " + keyField + "\nkeyWord : " + keyWord);
-			//return;
-			$("#updateFrm").submit();
-		}
-	
-	});	*/
-	//////////////// Update.jsp 에서 게시글 수정 끝 //////////////////
-	
-/*	//////////////// Update.jsp 에서 뒤로가기 버튼 시작 //////////////////
-	$("button#backBtn").click(function(){
-		history.back();
-	});*/
-	//////////////// Update.jsp 에서 뒤로가기 버튼 끝 //////////////////
-	
 });
 

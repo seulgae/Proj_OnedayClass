@@ -301,60 +301,7 @@ $(function(){
                  }
             });
             });
-	//////////////// Read.jsp 에서 게시글 추천하기 끝 //////////////////
-	
-	/*/////////////// Read.jsp 에서 답변글 버튼 시작 //////////////////	
-	
-	$("td.read>button#replyBtn").click(function(){
-	
-		let nowPage = $("input#nowPage").val().trim();
-		let num = $("input#num").val().trim();
-				
-		//let p3 = $("#pKeyField").val().trim();  // p3 : keyField
-	   //let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
-	
-		let param = "/Proj_OnedayClass/reviewBBS/RvReply.jsp?";
-			param += "num="+num;
-			param += "&nowPage="+nowPage;
-			//url += "&keyField="+p3;
-	     	//url += "&keyWord="+p4; 
-		location.href=url;
-	
-	});
-	
-	//////////////// Read.jsp 에서 답변글 버튼 끝 //////////////////
-		
-
-	/*/////////////// Delete.jsp 에서 게시글 삭제실행 시작 //////////////////
-	
-/*	
-	$("button#delSbmBtn").click(function(){
-		
-		let rUid = $("input#rUid").val().trim();
-		
-		if(rUid == "") {
-			$("input#rUid").focus();
-			return;
-		} else {
-		
-			let delChk = confirm("게시물을 삭제합니다.");
-			if(delChk) {
-				$("#delFrm").submit();
-			} else {
-				alert("삭제를 취소하셨습니다.");
-				return;
-			}
-			
-		}
-		
-	});
-	$("button#backBtn").click(function(){
-		history.back();
-	});*/
-	//////////////// Delete.jsp 에서 게시글 삭제실행 끝 /////////////////*/
-	
-	
-	
+	//////////////// Read.jsp 에서 게시글 추천하기 끝 //////////////////	
 	
 	//////////////// Update.jsp 에서 게시글 수정 시작 //////////////////
 	$("td.update>button#modBtn").click(function(event){
