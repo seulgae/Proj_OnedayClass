@@ -5,7 +5,7 @@
 3. 페이지별 css 보완
 4. DB설계 보완
 5. 코드 주석 정리 및 최적화
-6. 프로젝트 ERD 그램 수정
+6. 프로젝트 ERD 수정
 
 # Project 기능설명.
 https://github.com/Giltaehyeong/Proj_OnedayClass/blob/main/OnedayClass.pdf
