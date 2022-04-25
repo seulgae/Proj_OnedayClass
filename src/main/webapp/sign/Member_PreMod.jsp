@@ -15,7 +15,7 @@ if (request.getParameter("uPw") != null) {
 	boolean res = mMgr.loginMember(uId, uPw);
  
 	if (res) {
-	    response.sendRedirect("/Proj_OnedayClass/sign/Member_Mod.jsp");
+	    response.sendRedirect("/Proj_OnedayClass/sign/MyPage.jsp");
 	} else {
 %>
 

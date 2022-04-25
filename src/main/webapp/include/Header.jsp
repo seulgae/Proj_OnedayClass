@@ -26,7 +26,7 @@ if (session.getAttribute("cartCntKey") != null) {
                     <li><a href="/Proj_OnedayClass/sign/Logout.jsp">로그아웃</a></li>
 <!--                     <li><a href="/Proj_OnedayClass/adminBBS/AdminPage.jsp">관리자 페이지</a></li> -->
       <% } else if(iuId != null && iuLevel.equals("2")) { %>
-                   <li><a href="/Proj_OnedayClass/sign/MyPage.jsp"><%=iuName %> 선생님 환영합니다.</a></li>
+                   <li><a href="/Proj_OnedayClass/sign/Member_PreMod.jsp"><%=iuName %> 선생님 환영합니다.</a></li>
                     <li></li>
                     <li><a href="/Proj_OnedayClass/sign/Logout.jsp">로그아웃</a></li>
                 <!--     <li></li>
@@ -34,7 +34,7 @@ if (session.getAttribute("cartCntKey") != null) {
                     <li></li>
                     <li><a href="/Proj_OnedayClass/sign/ClassList.jsp">클래스 관리</a></li> -->
          <% } else if(iuId != null) { %>
-                   <li><a href="/Proj_OnedayClass/sign/MyPage.jsp"><%=iuName %>님 환영합니다.</a></li>
+                   <li><a href="/Proj_OnedayClass/sign/Member_PreMod.jsp"><%=iuName %>님 환영합니다.</a></li>
                     <li></li>
                     <li><a href="/Proj_OnedayClass/sign/Logout.jsp">로그아웃</a></li>
                     <li></li>
