@@ -8,7 +8,7 @@
 6. 프로젝트 ERD 수정
 
 # Project 기능설명.
-https://github.com/Giltaehyeong/Proj_OnedayClass/blob/main/OnedayClass(ClassBBSpart).pdf
+보완 
 
 # Project 동작영상.
 https://www.youtube.com/watch?v=kDs0r3Ea3LI
