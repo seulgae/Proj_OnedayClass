@@ -8,7 +8,7 @@
 6. 프로젝트 ERD 수정
 
 # Project 기능설명.
-보완 
+보완 업데이트 예정
 
 # Project 동작영상.
 https://www.youtube.com/watch?v=kDs0r3Ea3LI
