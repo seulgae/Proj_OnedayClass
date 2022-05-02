@@ -2,7 +2,7 @@
 - 코드 주석 정리 및 최적화 4/25 완료.
 
 # Project 기능설명.
-https://github.com/Giltaehyeong/Proj_OnedayClass/blob/main/OnedayClass(ClassBBS.part).pdf
+수정보완예정
 
 # Project 동작영상.
 https://www.youtube.com/watch?v=kDs0r3Ea3LI
