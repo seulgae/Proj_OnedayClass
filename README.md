@@ -2,7 +2,7 @@
 - 코드 주석 정리 및 최적화 4/25 완료.
 
 # Project 기능설명.
-Spring으로 포트폴리오 다시 제작中
+Spring으로 프로젝트 설명서 다시 제작中
 
 # Project 동작영상.
 https://www.youtube.com/watch?v=kDs0r3Ea3LI
