@@ -3,11 +3,11 @@
 2021.12.27 ~ 2023.01.22 
 
 ## 개발환경
-Eclipse / STS Tool
-MySQL DB
-Java / JDK 11
-JSP Model 1 구조
-HTML / CSS / jquery
+Eclipse / STS Tool </br>
+MySQL DB </br>
+Java / JDK 11 </br>
+JSP Model 1 구조 </br>
+HTML / CSS / jquery 
 
 ## 프로젝트 설명
 https://github.com/Giltaehyeong/Proj_OnedayClass/blob/main/OnedayClass(ClassBBS).pdf
