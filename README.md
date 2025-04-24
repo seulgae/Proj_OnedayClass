@@ -20,3 +20,4 @@ https://www.youtube.com/watch?v=kDs0r3Ea3LI
 2025.05.25 ~ 
 
 ## 프로젝트 링크
+https://github.com/seulgae/OneDayClass
