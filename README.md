@@ -17,7 +17,7 @@ https://www.youtube.com/watch?v=kDs0r3Ea3LI
 
 # 원데이 클래스 플랫폼 사이트 리뉴얼(Vue 프로젝트)
 ## 기간(예정)
-2025.05.25 ~ 
+2025.07 ~
 
 ## 프로젝트 링크
 https://github.com/seulgae/OneDayClass
