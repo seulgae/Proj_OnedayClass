@@ -1,4 +1,4 @@
-# EZEN ACADEMY 팀 종합 프로젝트
+# OnedayClass(EZEN ACADEMY 팀 종합 프로젝트)
 ## 기간
 2021.12.27 ~ 2023.01.22 
 
